@@ -2,6 +2,7 @@
 #define TIENDA_H
 
 #include <QMainWindow>
+#include "producto.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Tienda; }
@@ -17,5 +18,7 @@ public:
 
 private:
     Ui::Tienda *ui;
+    QList<Producto*> m_productos;
+    void cargarProductos();
 };
 #endif // TIENDA_H

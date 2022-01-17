@@ -6,10 +6,34 @@ Tienda::Tienda(QWidget *parent)
     , ui(new Ui::Tienda)
 {
     ui->setupUi(this);
+    //Lista de productos
+    cargarProductos();
+    //Mostrar los productos en el combo
+    foreach(Producto *p, m_productos){
+        ui->inProducto->addItem(p->nombre());
+    }
+
+    //Configurar cabecera de la tabla
+    QStringList cabecera = {"Cantidad","Producto","Subtotal"};
+    ui->tableWidget->setColumnCount(3);
+    ui->tableWidget->setHorizontalHeaderLabels(cabecera);
+
 }
 
 Tienda::~Tienda()
 {
     delete ui;
+}
+/**
+ * @brief Tienda::cargarProductos  Carga la lista de productos de la tienda
+ *
+ */
+void Tienda::cargarProductos()
+{
+    //Crear productos "quemados" en el codigo
+    m_productos.append(new Producto(1, "Leche", 0.80));
+    m_productos.append(new Producto(2, "Pan", 0.15));
+    m_productos.append(new Producto(1, "Queso", 2.50));
+    //Podria leerse de una base de datos, de un archivo o incluso de internet
 }
 
