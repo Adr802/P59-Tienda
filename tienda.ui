@@ -150,8 +150,12 @@
               <height>50</height>
              </size>
             </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
             <property name="styleSheet">
-             <string notr="true">QPushButton#btnAgregar:hover{
+             <string notr="true">background-color: rgb(172, 255, 218);
+QPushButton#btnAgregar:hover{
 background-color: rgb(222, 198, 255);
 }</string>
             </property>
@@ -182,7 +186,20 @@ background-color: rgb(222, 198, 255);
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_3">
              <item>
-              <widget class="QTableWidget" name="tableWidget"/>
+              <widget class="QTableWidget" name="tableWidget">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>300</height>
+                </size>
+               </property>
+               <property name="alternatingRowColors">
+                <bool>false</bool>
+               </property>
+               <property name="rowCount">
+                <number>0</number>
+               </property>
+              </widget>
              </item>
             </layout>
            </widget>
