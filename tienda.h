@@ -7,6 +7,8 @@
 #include <QMessageBox>
 
 #include "producto.h"
+#include "canasta.h"
+
 
 #define IVA 12
 
@@ -27,14 +29,23 @@ private slots:
 
     void on_btnAgregar_released();
 
+    void on_pushButton_released();
+
 private:
     Ui::Tienda *ui;
     QList<Producto*> m_productos;
+    QList<Canasta*> m_canasta;
+
     float m_subtotal;
 
     void cargarProductos();
 
     void calcular(float stProducto);
+
+    bool validarCed(QString as);
+
+    bool validarCanasta(Producto *p);
+
 
     void ordernarProductos();
 };
