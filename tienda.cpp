@@ -65,7 +65,7 @@ void Tienda::calcular(float stProducto)
 
 bool Tienda::validarCed(QString as)
 {
-    //bool est = true;
+    bool est = true;
     int vcedula[10];
     int vPar[4];
     int vImpar[5]={0};
@@ -76,49 +76,50 @@ bool Tienda::validarCed(QString as)
 
     double nu;
 
+    if(as=="9999999999"){
+        return true;
+    }
 
     do
     {
 
-        //Convertir a un numero
-        nu = as.toDouble();
-        //istringstream(as)>>nu;
-
+        nu=as.toInt();
         if(nu<100000000 || nu>9999999999)
         {
-            return false;
+
+            est=false;
             break;
         }
 
 
         //Separar string
-
-        QString p1 = as.mid(0,1);
-        QString p2 = as.mid(1,1);
-        QString p3 = as.mid(2,1);
-        QString p4 = as.mid(3,1);
-        QString p5 = as.mid(4,1);
-        QString p6 = as.mid(5,1);
-        QString p7 = as.mid(6,1);
-        QString p8 = as.mid(7,1);
-        QString p9 = as.mid(8,1);
-        QString p10 = as.mid(9,1);
+        QString p1=as.mid(0,1);
+        QString p2=as.mid(1,1);
+        QString p3=as.mid(2,1);
+        QString p4=as.mid(3,1);
+        QString p5=as.mid(4,1);
+        QString p6=as.mid(5,1);
+        QString p7=as.mid(6,1);
+        QString p8=as.mid(7,1);
+        QString p9=as.mid(8,1);
+        QString p10=as.mid(9,1);
 
         //Transformar string
-        vcedula[0] = p1.toInt();
-        vcedula[1] = p2.toInt();
-        vcedula[2] = p3.toInt();
-        vcedula[3] = p4.toInt();
-        vcedula[4] = p5.toInt();
-        vcedula[5] = p6.toInt();
-        vcedula[6] = p7.toInt();
-        vcedula[7] = p8.toInt();
-        vcedula[8] = p9.toInt();
-        vcedula[9] = p10.toInt();
+        vcedula[0]=p1.toInt();
+        vcedula[1]=p2.toInt();
+        vcedula[2]=p3.toInt();
+        vcedula[3]=p4.toInt();
+        vcedula[4]=p5.toInt();
+        vcedula[5]=p6.toInt();
+        vcedula[6]=p7.toInt();
+        vcedula[7]=p8.toInt();
+        vcedula[8]=p9.toInt();
+        vcedula[9]=p10.toInt();
 
         if(vcedula[0]>2)
         {
-            return false;
+
+            est = false;
             break;
         }
 
@@ -163,11 +164,11 @@ bool Tienda::validarCed(QString as)
         {
             if(nveri==vcedula[9])
             {
-                return true;
+                est=true;
                 break;
             }else
             {
-                return true;
+                est=false;
                 break;
             }
         }else if(nveri !=0)
@@ -176,18 +177,18 @@ bool Tienda::validarCed(QString as)
 
             if(nveri==vcedula[9])
             {
-                return true;
+                est=true;
                 break;
             }else
             {
 
-                return true;
+                est=false;
                 break;
             }
         }
 
     }while(nu<100000000 || nu>9999999999 || vcedula[0]>2);
-    return true;;
+    return est;
 
 }
 
@@ -206,6 +207,62 @@ bool Tienda::validarCanasta(Producto *p)
     return false;
 }
 
+bool Tienda::validarUsuario()
+{
+    bool flag = false;
+    QString ced = ui->inCedula->text();
+
+
+    //Validar si la cedula es consumidor final
+    if(ced == "9999999999"){
+        m_cliente = new Cliente(ced,".",".",".",".");
+        return true;
+    }
+
+
+    //Validar campos vacios
+    if(ui->inCedula->text() == ""){
+        flag = true;
+        ui->inCedula->setStyleSheet("background-color: rgb(217, 72, 72);");
+
+    }
+    if(ui->inNombre->text() == ""){
+        flag = true;
+        ui->inNombre->setStyleSheet("background-color: rgb(217, 72, 72);");
+    }
+    if(ui->inEmail->text() == ""){
+        flag = true;
+        ui->inEmail->setStyleSheet("background-color: rgb(217, 72, 72);");
+    }
+    if(ui->inTelefono->text() == ""){
+        flag = true;
+        ui->inTelefono->setStyleSheet("background-color: rgb(217, 72, 72);");
+    }
+
+    if(flag){ //Si se encontro un error con campos vacios
+        ui->statusbar->showMessage("Campos vacios",4000);
+        return false;
+    }
+
+
+    //Validar cedula
+    if(validarCed(ced)){
+        QString nombre = ui->inNombre->text();
+        QString email = ui->inEmail->text();
+        QString telefono = ui->inTelefono->text();
+        m_cliente = new Cliente(ced,nombre,telefono,email,"Ave");
+        qDebug()<<"Cliente creado";
+        return true;
+
+    }else{
+        ui->inCedula->setStyleSheet("background-color: rgb(217, 72, 72);");
+        ui->statusbar->showMessage("Cedula incorrecta",4000);
+        return false;
+    }
+
+    return true;
+}
+
 void Tienda::ordernarProductos()
 {
     for(int i=0; i > m_productos.length(); i++){
@@ -218,7 +275,7 @@ void Tienda::ordernarProductos()
         }
     }
 
- /*   QListIterator<Producto*> iter(m_productos);
+    /*   QListIterator<Producto*> iter(m_productos);
     iter.toFront();
     foreach(Producto *p, m_productos){
         if(iter.next() > iter.peekNext()){
@@ -280,10 +337,22 @@ void Tienda::on_btnAgregar_released()
         int i=0;
         foreach(Canasta *c, m_canasta){
             if(c->pro()->codigo() == p->codigo()){
-                c->setCantidad(cantidad);
-                //int canTemp = ui->tableWidget->takeItem(i,0);
-               // ui->tableWidget->setItem(i,0,new QTableWidgetItem(QString::number(canTemp + c->cantidad())));
-                float subTotal = p->precio() * cantidad;
+
+                float precioAntiguo = m_canasta.at(i)->cantidad() * p->precio(); //Obtener el subtotal antiguo
+
+
+                int canAnti = m_canasta.at(i)->cantidad(); //Obtener la cantidad que ya estaba en la canasta
+                c->setCantidad(cantidad + canAnti);    //Setear laa nueva cantidad con la que ya habia mas la nueva
+
+                ui->tableWidget->setItem(i,0,new QTableWidgetItem(QString::number(c->cantidad())));   //Setear la nueva cantidad en pantalla
+
+
+                float subTotal = p->precio() * cantidad;  //Calcula el subtotal de la nueva cantidad
+
+                float subTotalUnitario = precioAntiguo + subTotal;   //Calcular el nuevo subtotal unitario
+                ui->tableWidget->setItem(i,3,new QTableWidgetItem(QString::number(subTotalUnitario)));  //Mostrar el nuevo subtotal unitario
+
+
 
                 //Limpiar datos
                 ui->inCantidad->setValue(0);
@@ -298,27 +367,28 @@ void Tienda::on_btnAgregar_released()
 
     }
 
-
-
-
-
-
-
-
-
-    QString a = ui->inCedula->text();
-
-    if(validarCed(a)){
-        qDebug() << "hola";
-    }else{
-        ui->inCedula->setStyleSheet("background-color: rgb(217, 72, 72);");
-    }
-
 }
 
 
 void Tienda::on_pushButton_released()
 {
+    if(validarUsuario()){
+        ui->inCedula->setStyleSheet("background-color: rgb(159, 255, 162);");
+        ui->inNombre->setStyleSheet("background-color: rgb(159, 255, 162);");
+        ui->inEmail->setStyleSheet("background-color: rgb(159, 255, 162);");
+        ui->inTelefono->setStyleSheet("background-color: rgb(159, 255, 162);");
+        ui->inDireccion->setStyleSheet("background-color: rgb(159, 255, 162);");
 
+    }else{
+        return;
+    }
+
+}
+
+
+void Tienda::on_inCedula_textEdited()
+{
+    ui->inCedula->setStyleSheet("background-color: rgb(255, 255, 255);");
+    qDebug()<<"aa";
 }
 

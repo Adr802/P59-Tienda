@@ -10,16 +10,21 @@ CONFIG += c++11
 
 SOURCES += \
     canasta.cpp \
+    cliente.cpp \
+    factura.cpp \
     main.cpp \
     producto.cpp \
     tienda.cpp
 
 HEADERS += \
     canasta.h \
+    cliente.h \
+    factura.h \
     producto.h \
     tienda.h
 
 FORMS += \
+    factura.ui \
     tienda.ui
 
 # Default rules for deployment.

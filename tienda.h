@@ -8,7 +8,7 @@
 
 #include "producto.h"
 #include "canasta.h"
-
+#include "cliente.h"
 
 #define IVA 12
 
@@ -31,10 +31,13 @@ private slots:
 
     void on_pushButton_released();
 
+    void on_inCedula_textEdited();
+
 private:
     Ui::Tienda *ui;
     QList<Producto*> m_productos;
     QList<Canasta*> m_canasta;
+    Cliente *m_cliente;
 
     float m_subtotal;
 
@@ -45,6 +48,8 @@ private:
     bool validarCed(QString as);
 
     bool validarCanasta(Producto *p);
+
+    bool validarUsuario();
 
 
     void ordernarProductos();
