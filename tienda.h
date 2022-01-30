@@ -9,6 +9,7 @@
 #include "producto.h"
 #include "canasta.h"
 #include "cliente.h"
+#include "factura.h"
 
 #define IVA 12
 
@@ -31,7 +32,6 @@ private slots:
 
     void on_pushButton_released();
 
-    void on_inCedula_textEdited();
 
 private:
     Ui::Tienda *ui;
@@ -40,6 +40,7 @@ private:
     Cliente *m_cliente;
 
     float m_subtotal;
+    float m_totalCompras = 0;
 
     void cargarProductos();
 
@@ -51,6 +52,7 @@ private:
 
     bool validarUsuario();
 
+    void limpiar();
 
     void ordernarProductos();
 };

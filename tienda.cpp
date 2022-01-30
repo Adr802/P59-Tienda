@@ -12,7 +12,7 @@ Tienda::Tienda(QWidget *parent)
     foreach(Producto *p, m_productos){
         ui->inProducto->addItem(p->nombre());
     }
-
+    ui->inCedula->setFocus();
     //Configurar cabecera de la tabla
     QStringList cabecera = {"Cantidad","Producto","P. Unitario","Subtotal"};
     ui->tableWidget->setColumnCount(4);
@@ -251,7 +251,6 @@ bool Tienda::validarUsuario()
         QString email = ui->inEmail->text();
         QString telefono = ui->inTelefono->text();
         m_cliente = new Cliente(ced,nombre,telefono,email,"Ave");
-        qDebug()<<"Cliente creado";
         return true;
 
     }else{
@@ -261,6 +260,41 @@ bool Tienda::validarUsuario()
     }
 
     return true;
+}
+
+void Tienda::limpiar()
+{
+    ui->inCedula->clear();
+    ui->inNombre->clear();
+    ui->inEmail->clear();
+    ui->inTelefono->clear();
+    ui->inDireccion->clear();
+    //Limpiar datos
+    ui->inCantidad->setValue(0);
+    ui->inProducto->setFocus();
+
+    int fila = ui->tableWidget->rowCount();
+    for(int i=0; i <= fila;){
+        ui->tableWidget->removeRow(fila);
+        fila--;
+    }
+
+
+    ui->inCedula->setStyleSheet("background-color: rgb(255, 255, 255);");
+    ui->inNombre->setStyleSheet("background-color: rgb(255, 255, 255);");
+    ui->inEmail->setStyleSheet("background-color: rgb(255, 255, 255);");
+    ui->inTelefono->setStyleSheet("background-color: rgb(255, 255, 255);");
+    ui->inDireccion->setStyleSheet("background-color: rgb(255, 255, 255);");
+
+    m_subtotal = 0;
+    m_totalCompras = 0;
+    ui->outSubTotal->setText("$ 0.0");
+    ui->outIVA->setText("$ 0.0");
+    ui->outTotal->setText("$ 0.0");
+
+
+    m_canasta.clear();
+    delete m_cliente;
 }
 
 void Tienda::ordernarProductos()
@@ -309,19 +343,25 @@ void Tienda::on_btnAgregar_released()
     }
     //Obetener los datos de la GUI
     int i = ui->inProducto->currentIndex();
+    m_totalCompras++;
     Producto *p = m_productos.at(i);
 
     //Si no esta en la canasta(tabla)
     if(!validarCanasta(p)){
         m_canasta.append(new Canasta(p,cantidad));
+
         //Calcular subtotal del producto
         float subTotal = p->precio() * cantidad;
         //Agregar datos a la tabla
         int fila = ui->tableWidget->rowCount();
         ui->tableWidget->insertRow(fila);
-        ui->tableWidget->setItem(fila, 0, new QTableWidgetItem(QString::number(m_canasta.at(i)->cantidad())));
+
+        ui->tableWidget->setItem(fila, 0, new QTableWidgetItem(QString::number(cantidad)));
+
         ui->tableWidget->setItem(fila, 1, new QTableWidgetItem(p->nombre()));
+
         ui->tableWidget->setItem(fila, 2, new QTableWidgetItem(QString::number(p->precio(),'f',2)));
+
         ui->tableWidget->setItem(fila, 3, new QTableWidgetItem(QString::number(subTotal,'f',2)));
 
 
@@ -331,7 +371,7 @@ void Tienda::on_btnAgregar_released()
 
         //Actualizar subtotales
         calcular(subTotal);
-
+        return;
     }else{
 
         int i=0;
@@ -372,23 +412,29 @@ void Tienda::on_btnAgregar_released()
 
 void Tienda::on_pushButton_released()
 {
-    if(validarUsuario()){
+
+
+    if(validarUsuario() && m_totalCompras != 0){
         ui->inCedula->setStyleSheet("background-color: rgb(159, 255, 162);");
         ui->inNombre->setStyleSheet("background-color: rgb(159, 255, 162);");
         ui->inEmail->setStyleSheet("background-color: rgb(159, 255, 162);");
         ui->inTelefono->setStyleSheet("background-color: rgb(159, 255, 162);");
         ui->inDireccion->setStyleSheet("background-color: rgb(159, 255, 162);");
 
+        Factura p;
+        p.setCliente(m_cliente);
+        p.setLista(m_canasta);
+        p.armarString();
+        p.exec();
+
+        limpiar();
+
     }else{
+        if(m_totalCompras == 0)
+            ui->statusbar->showMessage("No hay compras",5000);
         return;
     }
 
 }
 
-
-void Tienda::on_inCedula_textEdited()
-{
-    ui->inCedula->setStyleSheet("background-color: rgb(255, 255, 255);");
-    qDebug()<<"aa";
-}
 
