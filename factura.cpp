@@ -27,11 +27,25 @@ void Factura::on_btnSave_released()
     QDateTime c = QDateTime::currentDateTime();
     QString nameFormat = c.toString("ddMMyyyy_hhmmss");
 
+    //Crear un archivo
+    QFile archivo(nameFormat + ".txt");
 
+    //Arbirlo para escritura
+    if(archivo.open(QFile::WriteOnly | QFile::Truncate)){
+        //Crear un stream de texto
+        QTextStream salida(&archivo);
+        salida << m_datos;
 
+        QMessageBox::information(this,"Informacion","El archivo fue guardado con exito");
+    }else{
+        //Mensaje si no se pudo guardar
+        QMessageBox::warning(this,
+                             "Guardar datos",
+                             "No se pudo guardar el archivo");
+    }
 
-
-
+    //Cerrar el archivo
+    archivo.close();
 
 
 }
@@ -103,7 +117,7 @@ void Factura::armarString()
         m_datos += "" + QString::number(subto, 'f', 2);
         m_datos += "\n";
     }
-    m_datos += "\n\n\n\n\n\n";
+    m_datos += "\n\n\n\n\n\n\n\n\n";
     m_IVA = m_subtotal * 0.12;
     m_total = m_IVA + m_subtotal;
 

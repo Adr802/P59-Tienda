@@ -29,7 +29,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Resumen de la compra</string>
   </property>
   <widget class="QPlainTextEdit" name="outFactura">
    <property name="geometry">
@@ -44,33 +44,31 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QPushButton" name="btnClose">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>550</y>
-     <width>168</width>
-     <height>23</height>
+     <x>227</x>
+     <y>551</y>
+     <width>80</width>
+     <height>21</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QPushButton" name="btnSave">
-      <property name="text">
-       <string>Guardar</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnClose">
-      <property name="text">
-       <string>Cerrar</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-   <zorder>btnClose</zorder>
-   <zorder>btnSave</zorder>
+   <property name="text">
+    <string>Cerrar</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnSave">
+   <property name="geometry">
+    <rect>
+     <x>141</x>
+     <y>551</y>
+     <width>80</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Guardar</string>
+   </property>
   </widget>
  </widget>
  <resources/>

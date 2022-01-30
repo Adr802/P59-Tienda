@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QDebug>
 #include <QDateTime>
+#include <QMessageBox>
 
 #include "canasta.h"
 #include "cliente.h"
