@@ -20,16 +20,23 @@ Tienda::Tienda(QWidget *parent)
 
     //Establecer el subtotal en cero
     m_subtotal = 0;
+
+    //Set validator to lineEdit (cedula, telefono)
+    ui->inCedula->setValidator(new QDoubleValidator(0,9999999999,0,this));
+    ui->inTelefono->setValidator(new QDoubleValidator(0,9999999999,0,this));
+
+
 }
+
 
 Tienda::~Tienda()
 {
     delete ui;
 }
 /**
- * @brief Tienda::cargarProductos  Carga la lista de productos de la tienda
- *
- */
+         * @brief Tienda::cargarProductos  Carga la lista de productos de la tienda
+         *
+         */
 void Tienda::cargarProductos()
 {
     //Crear productos "quemados" en el codigo
@@ -41,9 +48,9 @@ void Tienda::cargarProductos()
 }
 
 /**
- * @brief Tienda::calcular   Calculo del subtotal, y lo muestra en pantalla
- * @param stProducto         Subtotal de cada producto
- */
+         * @brief Tienda::calcular   Calculo del subtotal, y lo muestra en pantalla
+         * @param stProducto         Subtotal de cada producto
+         */
 void Tienda::calcular(float stProducto)
 {
     m_subtotal += stProducto;
@@ -58,10 +65,10 @@ void Tienda::calcular(float stProducto)
 }
 
 /**
- * @brief Tienda::validarCed     Valida si una cedula es correcta
- * @param as                     Recibe un QStrig que contiene la cedula
- * @return                       Retorna true or false depending on the result
- */
+         * @brief Tienda::validarCed     Valida si una cedula es correcta
+         * @param as                     Recibe un QStrig que contiene la cedula
+         * @return                       Retorna true or false depending on the result
+         */
 
 bool Tienda::validarCed(QString as)
 {
@@ -193,10 +200,10 @@ bool Tienda::validarCed(QString as)
 }
 
 /**
- * @brief Tienda::validarCanasta   Valida si un producto ya esta dentro de la tabla
- * @param p                        Recibe un objetc "Producto"
- * @return                         Return true(the product is in the table) or false (the product isn´t in the table)
- */
+         * @brief Tienda::validarCanasta   Valida si un producto ya esta dentro de la tabla
+         * @param p                        Recibe un objetc "Producto"
+         * @return                         Return true(the product is in the table) or false (the product isn´t in the table)
+         */
 bool Tienda::validarCanasta(Producto *p)
 {
     foreach(Canasta *c, m_canasta){
@@ -250,7 +257,8 @@ bool Tienda::validarUsuario()
         QString nombre = ui->inNombre->text();
         QString email = ui->inEmail->text();
         QString telefono = ui->inTelefono->text();
-        m_cliente = new Cliente(ced,nombre,telefono,email,"Ave");
+        QString direccion = ui->inDireccion->text();
+        m_cliente = new Cliente(ced,nombre,telefono,email,direccion);
         return true;
 
     }else{
@@ -291,10 +299,6 @@ void Tienda::limpiar()
     ui->outSubTotal->setText("$ 0.0");
     ui->outIVA->setText("$ 0.0");
     ui->outTotal->setText("$ 0.0");
-
-
-    m_canasta.clear();
-    delete m_cliente;
 }
 
 void Tienda::ordernarProductos()
@@ -310,13 +314,13 @@ void Tienda::ordernarProductos()
     }
 
     /*   QListIterator<Producto*> iter(m_productos);
-    iter.toFront();
-    foreach(Producto *p, m_productos){
-        if(iter.next() > iter.peekNext()){
-            qDebug()<<p->nombre();
-        }
+            iter.toFront();
+            foreach(Producto *p, m_productos){
+                if(iter.next() > iter.peekNext()){
+                    qDebug()<<p->nombre();
+                }
 
-    }*/
+            }*/
 }
 
 
@@ -427,7 +431,10 @@ void Tienda::on_pushButton_released()
         p.armarString();
         p.exec();
 
+        //Limpia datos y elimina objetos
         limpiar();
+        m_canasta.clear();
+        delete m_cliente;
 
     }else{
         if(m_totalCompras == 0)
@@ -437,4 +444,10 @@ void Tienda::on_pushButton_released()
 
 }
 
+
+
+void Tienda::on_btnLimpiar_released()
+{
+    limpiar();
+}
 

@@ -33,6 +33,8 @@ private slots:
     void on_pushButton_released();
 
 
+    void on_btnLimpiar_released();
+
 private:
     Ui::Tienda *ui;
     QList<Producto*> m_productos;

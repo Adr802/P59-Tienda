@@ -93,28 +93,28 @@ void Factura::armarString()
     foreach(Canasta *c, m_lista){
         float subto = c->pro()-> precio() * c->cantidad();
         m_subtotal += subto;
-        for(int i=0; i<5; i++){
+        /*for(int i=0; i<5; i++){
             m_datos += " ";
-        }
-        m_datos += "" + QString::number(c->cantidad());
+        }*/
+        m_datos += "    " + QString::number(c->cantidad());
 
 
-        for(int i=0; i<25 - QString::number(c->cantidad()).size(); i++){
+        /*for(int i=0; i<25 - QString::number(c->cantidad()).size(); i++){
             m_datos += " ";
-        }
-        m_datos += "" + c->pro()->nombre();
+        }*/
+        m_datos += "\t                " + c->pro()->nombre();
 
 
-        for(int i=0; i<54 - c->pro()->nombre().size(); i++){
+        /*for(int i=0; i<54 - c->pro()->nombre().size(); i++){
             m_datos += " ";
-        }
-        m_datos += "" + QString::number(c->pro()->precio());
+        }*/
+        m_datos += "\t\t           " + QString::number(c->pro()->precio());
 
 
-        for(int i=0; i<35 - QString::number(c->pro()->precio()).size(); i++){
+        /*for(int i=0; i<35 - QString::number(c->pro()->precio()).size(); i++){
             m_datos += " ";
-        }
-        m_datos += "" + QString::number(subto, 'f', 2);
+        }*/
+        m_datos += "\t               " + QString::number(subto, 'f', 2);
         m_datos += "\n";
     }
     m_datos += "\n\n\n\n\n\n\n\n\n";
