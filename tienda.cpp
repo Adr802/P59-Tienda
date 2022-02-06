@@ -14,7 +14,7 @@ Tienda::Tienda(QWidget *parent)
     }
     ui->inCedula->setFocus();
     //Configurar cabecera de la tabla
-    QStringList cabecera = {"Cantidad","Producto","P. Unitario","Subtotal"};
+    QStringList cabecera = {tr("Cantidad"),tr("Producto"),tr("P. Unitario"),tr("Subtotal")};
     ui->tableWidget->setColumnCount(4);
     ui->tableWidget->setHorizontalHeaderLabels(cabecera);
 
@@ -40,9 +40,9 @@ Tienda::~Tienda()
 void Tienda::cargarProductos()
 {
     //Crear productos "quemados" en el codigo
-    m_productos.append(new Producto(1, "Leche", 0.80));
-    m_productos.append(new Producto(2, "Pan", 0.15));
-    m_productos.append(new Producto(3, "Queso", 2.50));
+    m_productos.append(new Producto(1, tr("Leche"), 0.80));
+    m_productos.append(new Producto(2, tr("Pan"), 0.15));
+    m_productos.append(new Producto(3, tr("Queso"), 2.50));
     //Podria leerse de una base de datos, de un archivo o incluso de internet
     // ordernarProductos();
 }
@@ -213,7 +213,10 @@ bool Tienda::validarCanasta(Producto *p)
     }
     return false;
 }
-
+/**
+ * @brief Tienda::validarUsuario        Valida si es consumidor final o con datos (valida campos vacios)
+ * @return                              true o false
+ */
 bool Tienda::validarUsuario()
 {
     bool flag = false;
@@ -228,26 +231,32 @@ bool Tienda::validarUsuario()
 
 
     //Validar campos vacios
-    if(ui->inCedula->text() == ""){
+    if(ui->inCedula->text().isEmpty()){
         flag = true;
         ui->inCedula->setStyleSheet("background-color: rgb(217, 72, 72);");
 
     }
-    if(ui->inNombre->text() == ""){
+    if(ui->inNombre->text().isEmpty()){
         flag = true;
         ui->inNombre->setStyleSheet("background-color: rgb(217, 72, 72);");
     }
-    if(ui->inEmail->text() == ""){
+    if(ui->inEmail->text().isEmpty()){
         flag = true;
         ui->inEmail->setStyleSheet("background-color: rgb(217, 72, 72);");
     }
-    if(ui->inTelefono->text() == ""){
+    if(ui->inTelefono->text().isEmpty()){
         flag = true;
         ui->inTelefono->setStyleSheet("background-color: rgb(217, 72, 72);");
     }
+    if(ui->inDireccion->text().isEmpty()){
+        flag = true;
+        ui->inDireccion->setStyleSheet("background-color: rgb(217, 72, 72);");
+    }
+
+
 
     if(flag){ //Si se encontro un error con campos vacios
-        ui->statusbar->showMessage("Campos vacios",4000);
+        ui->statusbar->showMessage(tr("Campos vacios"),4000);
         return false;
     }
 
@@ -263,13 +272,15 @@ bool Tienda::validarUsuario()
 
     }else{
         ui->inCedula->setStyleSheet("background-color: rgb(217, 72, 72);");
-        ui->statusbar->showMessage("Cedula incorrecta",4000);
+        ui->statusbar->showMessage(tr("Cedula incorrecta"),4000);
         return false;
     }
 
     return true;
 }
-
+/**
+ * @brief Tienda::limpiar  Limpia toda la pantalla y vacia la canasta
+ */
 void Tienda::limpiar()
 {
     ui->inCedula->clear();
@@ -299,30 +310,8 @@ void Tienda::limpiar()
     ui->outSubTotal->setText("$ 0.0");
     ui->outIVA->setText("$ 0.0");
     ui->outTotal->setText("$ 0.0");
+    m_canasta.clear();
 }
-
-void Tienda::ordernarProductos()
-{
-    for(int i=0; i > m_productos.length(); i++){
-        for(int j=0; j > m_productos.length(); j++){
-            if(m_productos[i]->nombre() > m_productos[j]->nombre()){
-                Producto *temp = m_productos[i];
-                m_productos[i] = m_productos[j];
-                m_productos[j] = temp;
-            }
-        }
-    }
-
-    /*   QListIterator<Producto*> iter(m_productos);
-            iter.toFront();
-            foreach(Producto *p, m_productos){
-                if(iter.next() > iter.peekNext()){
-                    qDebug()<<p->nombre();
-                }
-
-            }*/
-}
-
 
 
 void Tienda::on_inProducto_currentIndexChanged(int index)
@@ -433,12 +422,11 @@ void Tienda::on_pushButton_released()
 
         //Limpia datos y elimina objetos
         limpiar();
-        m_canasta.clear();
         delete m_cliente;
 
     }else{
         if(m_totalCompras == 0)
-            ui->statusbar->showMessage("No hay compras",5000);
+            ui->statusbar->showMessage(tr("No hay compras"),5000);
         return;
     }
 

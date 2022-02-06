@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Tienda</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="recursos.qrc">
+    <normaloff>:/img/icon-App.png</normaloff>:/img/icon-App.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="maximumSize">
     <size>
@@ -289,6 +293,10 @@ border-color: transparent;
               <property name="text">
                <string>Agregar</string>
               </property>
+              <property name="icon">
+               <iconset resource="recursos.qrc">
+                <normaloff>:/img/icon-Agregar.png</normaloff>:/img/icon-Agregar.png</iconset>
+              </property>
              </widget>
             </item>
            </layout>
@@ -390,6 +398,10 @@ background-color: rgb(59, 64, 223);</string>
                <property name="text">
                 <string>Finalizar</string>
                </property>
+               <property name="icon">
+                <iconset resource="recursos.qrc">
+                 <normaloff>:/img/icon-Finalizar.png</normaloff>:/img/icon-Finalizar.png</iconset>
+               </property>
               </widget>
              </item>
              <item>
@@ -413,6 +425,10 @@ background-color: rgb(249, 255, 178);</string>
                </property>
                <property name="text">
                 <string>Limpiar</string>
+               </property>
+               <property name="icon">
+                <iconset resource="recursos.qrc">
+                 <normaloff>:/img/icon-Limpiar.png</normaloff>:/img/icon-Limpiar.png</iconset>
                </property>
               </widget>
              </item>
@@ -569,6 +585,8 @@ color: rgb(255, 0, 0);
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="recursos.qrc"/>
+ </resources>
  <connections/>
 </ui>

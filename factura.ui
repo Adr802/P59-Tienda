@@ -71,7 +71,7 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>80</width>
+          <width>104</width>
           <height>30</height>
          </size>
         </property>
@@ -94,6 +94,10 @@ color: rgb(0, 0, 0);</string>
         </property>
         <property name="text">
          <string>Guardar</string>
+        </property>
+        <property name="icon">
+         <iconset resource="recursos.qrc">
+          <normaloff>:/img/icon-Guardar.png</normaloff>:/img/icon-Guardar.png</iconset>
         </property>
        </widget>
       </item>
@@ -125,6 +129,10 @@ color: rgb(0, 0, 0);</string>
         <property name="text">
          <string>Cerrar</string>
         </property>
+        <property name="icon">
+         <iconset resource="recursos.qrc">
+          <normaloff>:/img/icon-Cerrar.png</normaloff>:/img/icon-Cerrar.png</iconset>
+        </property>
        </widget>
       </item>
       <item>
@@ -145,6 +153,8 @@ color: rgb(0, 0, 0);</string>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="recursos.qrc"/>
+ </resources>
  <connections/>
 </ui>

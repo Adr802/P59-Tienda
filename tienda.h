@@ -56,6 +56,5 @@ private:
 
     void limpiar();
 
-    void ordernarProductos();
 };
 #endif // TIENDA_H
