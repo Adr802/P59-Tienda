@@ -19,27 +19,33 @@
         <translation>Fermer</translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="39"/>
+        <location filename="factura.cpp" line="27"/>
+        <location filename="factura.cpp" line="42"/>
+        <source>Documentos</source>
+        <translation>Documents</translation>
+    </message>
+    <message>
+        <location filename="factura.cpp" line="54"/>
         <source>Informacion</source>
         <translation>Information</translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="39"/>
+        <location filename="factura.cpp" line="54"/>
         <source>El archivo fue guardado con exito</source>
         <translation>Le fichier a été enregistré avec succès</translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="43"/>
+        <location filename="factura.cpp" line="58"/>
         <source>Guardar datos</source>
         <translation>Enregistrer des données</translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="44"/>
+        <location filename="factura.cpp" line="59"/>
         <source>No se pudo guardar el archivo</source>
         <translation>Le fichier n&apos;a pas pu être enregistré</translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="71"/>
+        <location filename="factura.cpp" line="84"/>
         <source>
 		Abarratore * Los panas *
 </source>
@@ -48,7 +54,7 @@
 </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="76"/>
+        <location filename="factura.cpp" line="89"/>
         <source>
 		DATOS DEL CLIENTE
 </source>
@@ -57,32 +63,32 @@
 </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="78"/>
+        <location filename="factura.cpp" line="91"/>
         <source>Cedula: </source>
         <translation>Carte d&apos;identité: </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="79"/>
+        <location filename="factura.cpp" line="92"/>
         <source>Nombre: </source>
         <translation>Nom: </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="80"/>
+        <location filename="factura.cpp" line="93"/>
         <source>Telefono: </source>
         <translation>Téléphone: </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="81"/>
+        <location filename="factura.cpp" line="94"/>
         <source>Email: </source>
         <translation>E-mail: </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="82"/>
+        <location filename="factura.cpp" line="95"/>
         <source>Direccion: </source>
         <translation>Adresse: </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="87"/>
+        <location filename="factura.cpp" line="100"/>
         <source>
 		DATOS DE LA COMPRA
 </source>
@@ -91,7 +97,7 @@
 </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="91"/>
+        <location filename="factura.cpp" line="104"/>
         <source>
    Cant.	  Descripcion	                       P.Unitario	                   Subtotal
 </source>
@@ -100,17 +106,17 @@
 </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="116"/>
+        <location filename="factura.cpp" line="129"/>
         <source>			          Subtotal:	$ </source>
         <translation>			          Total:	$ </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="118"/>
+        <location filename="factura.cpp" line="131"/>
         <source>			          IVA:	$ </source>
         <translation>			          T.V.A:	$ </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="120"/>
+        <location filename="factura.cpp" line="133"/>
         <source>			          Total:	$ </source>
         <translation>			          Le total:	$ </translation>
     </message>
@@ -123,91 +129,91 @@
         <translation>Boutique</translation>
     </message>
     <message>
-        <location filename="tienda.ui" line="85"/>
+        <location filename="tienda.ui" line="81"/>
         <source>Cliente</source>
         <translation>Client</translation>
     </message>
     <message>
-        <location filename="tienda.ui" line="96"/>
+        <location filename="tienda.ui" line="92"/>
         <source>E-mail:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="tienda.ui" line="111"/>
+        <location filename="tienda.ui" line="107"/>
         <source>Cedula:</source>
         <translation>Carte d&apos;identité:</translation>
     </message>
     <message>
-        <location filename="tienda.ui" line="133"/>
-        <location filename="tienda.ui" line="212"/>
+        <location filename="tienda.ui" line="129"/>
+        <location filename="tienda.ui" line="208"/>
         <source>Nombre:</source>
         <translation>Nom:</translation>
     </message>
     <message>
-        <location filename="tienda.ui" line="145"/>
+        <location filename="tienda.ui" line="141"/>
         <source>Telefono:</source>
         <translation>Téléphone:</translation>
     </message>
     <message>
-        <location filename="tienda.ui" line="157"/>
+        <location filename="tienda.ui" line="153"/>
         <source>Direccion:</source>
         <translation>Adresse:</translation>
     </message>
     <message>
-        <location filename="tienda.ui" line="201"/>
+        <location filename="tienda.ui" line="197"/>
         <source>Productos</source>
         <translation>Produits</translation>
     </message>
     <message>
-        <location filename="tienda.ui" line="227"/>
+        <location filename="tienda.ui" line="223"/>
         <source>Cantidad:</source>
         <translation>Quantité:</translation>
     </message>
     <message>
-        <location filename="tienda.ui" line="248"/>
+        <location filename="tienda.ui" line="244"/>
         <source>Precio:</source>
         <translation>Le prix:</translation>
     </message>
     <message>
-        <location filename="tienda.ui" line="260"/>
-        <location filename="tienda.ui" line="486"/>
-        <location filename="tienda.ui" line="519"/>
-        <location filename="tienda.ui" line="558"/>
+        <location filename="tienda.ui" line="256"/>
+        <location filename="tienda.ui" line="482"/>
+        <location filename="tienda.ui" line="515"/>
+        <location filename="tienda.ui" line="554"/>
         <source>0.0</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="tienda.ui" line="294"/>
+        <location filename="tienda.ui" line="290"/>
         <source>Agregar</source>
         <translation>Ajouter</translation>
     </message>
     <message>
-        <location filename="tienda.ui" line="348"/>
+        <location filename="tienda.ui" line="344"/>
         <source>Detalle de compra</source>
         <translation>Détail de l&apos;achat</translation>
     </message>
     <message>
-        <location filename="tienda.ui" line="399"/>
+        <location filename="tienda.ui" line="395"/>
         <source>Finalizar</source>
         <translation>Finaliser</translation>
     </message>
     <message>
-        <location filename="tienda.ui" line="427"/>
+        <location filename="tienda.ui" line="423"/>
         <source>Limpiar</source>
         <translation>Nettoyer</translation>
     </message>
     <message>
-        <location filename="tienda.ui" line="471"/>
+        <location filename="tienda.ui" line="467"/>
         <source>Subtotal:</source>
         <translation>Total:</translation>
     </message>
     <message>
-        <location filename="tienda.ui" line="504"/>
+        <location filename="tienda.ui" line="500"/>
         <source>IVA (12%)</source>
         <translation>T.V.A.(12%)</translation>
     </message>
     <message>
-        <location filename="tienda.ui" line="539"/>
+        <location filename="tienda.ui" line="535"/>
         <source>Total:</source>
         <translation>LE TOTAL:</translation>
     </message>
@@ -247,17 +253,17 @@
         <translation>Fromage</translation>
     </message>
     <message>
-        <location filename="tienda.cpp" line="256"/>
+        <location filename="tienda.cpp" line="259"/>
         <source>Campos vacios</source>
         <translation>Champs vides</translation>
     </message>
     <message>
-        <location filename="tienda.cpp" line="272"/>
+        <location filename="tienda.cpp" line="275"/>
         <source>Cedula incorrecta</source>
         <translation>Mauvaise identification</translation>
     </message>
     <message>
-        <location filename="tienda.cpp" line="447"/>
+        <location filename="tienda.cpp" line="429"/>
         <source>No hay compras</source>
         <translation>Pas de courses</translation>
     </message>

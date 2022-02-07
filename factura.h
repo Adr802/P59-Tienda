@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QDateTime>
 #include <QMessageBox>
+#include <QDir>
 
 #include "canasta.h"
 #include "cliente.h"
@@ -43,6 +44,8 @@ private:
     float m_subtotal = 0;
     float m_IVA = 0;
     float m_total = 0;
+
+    void guardar();
 
 
 

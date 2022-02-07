@@ -13,10 +13,6 @@
   <property name="windowTitle">
    <string>Tienda</string>
   </property>
-  <property name="windowIcon">
-   <iconset resource="recursos.qrc">
-    <normaloff>:/img/icon-App.png</normaloff>:/img/icon-App.png</iconset>
-  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="maximumSize">
     <size>

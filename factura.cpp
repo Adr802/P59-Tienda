@@ -24,11 +24,26 @@ void Factura::on_btnClose_released()
 
 void Factura::on_btnSave_released()
 {
+    QString doc = tr("Documentos");
+    QDir direc;
+
+    if(direc.home().mkdir(doc + "/Tienda")){
+        guardar();
+
+    }else{
+
+        guardar();
+    }
+
+}
+
+void Factura::guardar()
+{
+    QString doc = tr("Documentos");
     QDateTime c = QDateTime::currentDateTime();
     QString nameFormat = c.toString("ddMMyyyy_hhmmss");
-
     //Crear un archivo
-    QFile archivo("../" + nameFormat + ".txt");
+    QFile archivo(QDir::homePath() +"/" + doc + "/Tienda/" + nameFormat + ".txt");
 
     //Arbirlo para escritura
     if(archivo.open(QFile::WriteOnly | QFile::Truncate)){
@@ -46,8 +61,6 @@ void Factura::on_btnSave_released()
 
     //Cerrar el archivo
     archivo.close();
-
-
 }
 
 void Factura::setLista(const QList<Canasta *> &newLista)

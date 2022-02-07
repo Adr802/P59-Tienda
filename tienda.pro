@@ -31,6 +31,8 @@ TRANSLATIONS = \
     tienda_en.ts \
     tienda_fr.ts
 
+RC_ICONS = img/market.ico
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
@@ -38,3 +40,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     recursos.qrc
+
+DISTFILES += \
+    diagrama.qmodel

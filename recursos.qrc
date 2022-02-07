@@ -2,7 +2,6 @@
     <qresource prefix="/">
         <file>tienda_en.qm</file>
         <file>tienda_fr.qm</file>
-        <file>img/icon-App.png</file>
         <file>img/icon-Finalizar.png</file>
         <file>img/icon-Limpiar.png</file>
         <file>img/icon-Agregar.png</file>
