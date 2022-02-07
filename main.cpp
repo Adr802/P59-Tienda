@@ -30,24 +30,24 @@ int main(int argc, char *argv[])
     if(text != QLocale::Spanish){
         a.installTranslator(&traducion);
     }
-    //    //
-    //    // Solicitando al usuario que seleccione un idioma
-    //    QStringList idiomas;
-    //    idiomas << "Francés" << "Inglés" << "Español";
-    //    QString idiomaSeleccionado = QInputDialog::getItem(NULL,
-    //                                                       "Idioma",
-    //                                                       "Seleccione un idioma",
-    //                                                       idiomas);
-    //    // Dependiendo del idioma seleccionado, carga el archivo de rtaducción
-    //    if (idiomaSeleccionado == "Francés"){
-    //        traducion.load(":/tienda_fr_FR.qm");
-    //    }else if (idiomaSeleccionado == "Inglés"){
-    //        traducion.load(":/tienda_en.qm");
-    //    }
-    //    // Si es diferente de español, se instala la traducción en TODA la aplicación
-    //    if (idiomaSeleccionado != "Español"){
-    //        a.installTranslator(&traducion);
-    //    }
+        //
+//        // Solicitando al usuario que seleccione un idioma
+//        QStringList idiomas;
+//        idiomas << "Francés" << "Inglés" << "Español";
+//        QString idiomaSeleccionado = QInputDialog::getItem(NULL,
+//                                                           "Idioma",
+//                                                           "Seleccione un idioma",
+//                                                           idiomas);
+//        // Dependiendo del idioma seleccionado, carga el archivo de rtaducción
+//        if (idiomaSeleccionado == "Francés"){
+//            traducion.load(":/tienda_fr_FR.qm");
+//        }else if (idiomaSeleccionado == "Inglés"){
+//            traducion.load(":/tienda_en.qm");
+//        }
+//        // Si es diferente de español, se instala la traducción en TODA la aplicación
+//        if (idiomaSeleccionado != "Español"){
+//            a.installTranslator(&traducion);
+//        }
     // Muestra la ventana principal
 
 

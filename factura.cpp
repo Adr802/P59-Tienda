@@ -24,14 +24,13 @@ void Factura::on_btnClose_released()
 
 void Factura::on_btnSave_released()
 {
-    QString doc = tr("Documentos");
     QDir direc;
+    qDebug()<<direc.home().mkdir("Documents/Tienda")<<endl;
 
-    if(direc.home().mkdir(doc + "/Tienda")){
+    if(direc.home().mkdir("Documents/Tienda")){
         guardar();
 
     }else{
-
         guardar();
     }
 
@@ -39,11 +38,11 @@ void Factura::on_btnSave_released()
 
 void Factura::guardar()
 {
-    QString doc = tr("Documentos");
     QDateTime c = QDateTime::currentDateTime();
     QString nameFormat = c.toString("ddMMyyyy_hhmmss");
     //Crear un archivo
-    QFile archivo(QDir::homePath() +"/" + doc + "/Tienda/" + nameFormat + ".txt");
+    QFile archivo(QDir::homePath() + "/Documents/Tienda/" + nameFormat + ".txt");
+    qDebug()<<QDir::homePath() + "/Documents/Tienda/" + nameFormat + ".txt";
 
     //Arbirlo para escritura
     if(archivo.open(QFile::WriteOnly | QFile::Truncate)){

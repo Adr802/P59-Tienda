@@ -19,33 +19,31 @@
         <translation>Close</translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="27"/>
-        <location filename="factura.cpp" line="42"/>
         <source>Documentos</source>
-        <translation>Documents</translation>
+        <translation type="vanished">Documents</translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="54"/>
+        <location filename="factura.cpp" line="53"/>
         <source>Informacion</source>
         <translation>Information</translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="54"/>
+        <location filename="factura.cpp" line="53"/>
         <source>El archivo fue guardado con exito</source>
         <translation>The file was saved successfully</translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="58"/>
+        <location filename="factura.cpp" line="57"/>
         <source>Guardar datos</source>
         <translation>Save data</translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="59"/>
+        <location filename="factura.cpp" line="58"/>
         <source>No se pudo guardar el archivo</source>
         <translation>Could not save file</translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="84"/>
+        <location filename="factura.cpp" line="83"/>
         <source>
 		Abarratore * Los panas *
 </source>
@@ -54,7 +52,7 @@
 </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="89"/>
+        <location filename="factura.cpp" line="88"/>
         <source>
 		DATOS DEL CLIENTE
 </source>
@@ -63,32 +61,32 @@
 </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="91"/>
+        <location filename="factura.cpp" line="90"/>
         <source>Cedula: </source>
         <translation>ID: </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="92"/>
+        <location filename="factura.cpp" line="91"/>
         <source>Nombre: </source>
         <translation>Name: </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="93"/>
+        <location filename="factura.cpp" line="92"/>
         <source>Telefono: </source>
         <translation>Telephone: </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="94"/>
+        <location filename="factura.cpp" line="93"/>
         <source>Email: </source>
         <translation>E-mail: </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="95"/>
+        <location filename="factura.cpp" line="94"/>
         <source>Direccion: </source>
         <translation>Address: </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="100"/>
+        <location filename="factura.cpp" line="99"/>
         <source>
 		DATOS DE LA COMPRA
 </source>
@@ -97,7 +95,7 @@
 </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="104"/>
+        <location filename="factura.cpp" line="103"/>
         <source>
    Cant.	  Descripcion	                       P.Unitario	                   Subtotal
 </source>
@@ -106,17 +104,17 @@
 </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="129"/>
+        <location filename="factura.cpp" line="128"/>
         <source>			          Subtotal:	$ </source>
         <translation>			          Subtotal:	$ </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="131"/>
+        <location filename="factura.cpp" line="130"/>
         <source>			          IVA:	$ </source>
         <translation>			          VAT:	$ </translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="133"/>
+        <location filename="factura.cpp" line="132"/>
         <source>			          Total:	$ </source>
         <translation>			          Total:	$ </translation>
     </message>
